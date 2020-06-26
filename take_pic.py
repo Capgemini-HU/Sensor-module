@@ -10,9 +10,9 @@ if not os.path.exists("images"):
 
 # Check if camera is available.
 if not os.path.exists("/dev/video0"):
-	print("error")
+	print("Camera is unavailable. Check your USB devices.")
 else:
-	call(["fswebcam", "-r 1280x720", "-S 10", "./images/%H:%M-%d-%m-%Y.jpg"])
+	call(["fswebcam", "-r 1280x720", "-S 10","--no-banner", "./images/%S:%H:%M-%d-%m-%Y.jpg"])
 	# -S is the argument to call "skip frames". 
 	# 10 frames are skipped so the camera is able to adjust brightness.
 
