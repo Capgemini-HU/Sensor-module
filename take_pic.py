@@ -1,12 +1,18 @@
 import time
 import os
 from subprocess import call
+# This script takes an image and saves it into "/images"
+# Time format e.g. "10:14-26-06-2020.jpg"
 
+# Check if folder exists, else create one.
 if not os.path.exists("images"):
 	os.makedirs("images")
 
-# -S is the argument to call "skip frames". 
-# 10 frames are skipped so the camera is able to adjust brightness.
+# Check if camera is available.
+if not os.path.exists("/dev/video0"):
+	print("error")
+else:
+	call(["fswebcam", "-r 1280x720", "-S 10", "./images/%H:%M-%d-%m-%Y.jpg"])
+	# -S is the argument to call "skip frames". 
+	# 10 frames are skipped so the camera is able to adjust brightness.
 
-# Time format e.g. "10:14-26-06-2020.jpg"
-call(["fswebcam", "-r 1280x720", "-S 10", "./images/%H:%M-%d-%m-%Y.jpg"])
