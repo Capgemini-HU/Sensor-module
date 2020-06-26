@@ -18,7 +18,9 @@ Dit genereert een bestand genaamt "street_yolo_out_py.jpg".
 
 Om een foto te maken.
 
-"python3 take_pic.py"
+```
+python3 take_pic.py
+```
 
 Deze code gebruikt "fswebcam" op de Raspberry Pi. Dit is een ubuntu package en werkt dus niet op windows.
 Dit genereert een jpg in dezelfde folder.
