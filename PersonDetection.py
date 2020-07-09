@@ -28,7 +28,7 @@ class PersonDetection:
         self.outputNames = [layersNames[i[0] - 1] for i in self.net.getUnconnectedOutLayers()]
 
     def detectPersons(self, frame):
-        # Returns the *relative* position of persons on an image.
+        # TODO: should return the *relative* position of persons on an image.
 
         resultList = []
 
@@ -77,6 +77,6 @@ class PersonDetection:
             height = box[3]
 
             center = Vector2(left + (width/2), top + (height/2))
-            centerRelative = Vector2(center.x / self.inpWidth, center.y / self.inpHeight)
-            resultList.append(centerRelative)
+            #centerRelative = Vector2(center.x / self.inpWidth, center.y / self.inpHeight)
+            resultList.append(center)
         return resultList

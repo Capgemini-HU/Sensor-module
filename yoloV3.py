@@ -77,8 +77,11 @@ def postprocess(frame, outs):
 
 # Draw the predicted bounding box
 def drawPred(classId, conf, left, top, right, bottom):
-    # Draw a bounding box.
-    cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255))
+    # calculate center
+    diff_h = int(abs(top - bottom) / 2)
+    diff_w = int(abs(left - right) / 2)
+    # # draw a dot on the center
+    cv2.line(frame, (left + diff_w - 3, top + diff_h - 3), (left + diff_w , top + diff_h), (0, 0, 255), 2)
 
     label = '%.2f' % conf
 

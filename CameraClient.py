@@ -1,11 +1,11 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from Datapoint import Datapoint
 
 # TODO: 3d map from multiple camera's functionality
 class CameraClient:
     def __init__(self, systemID, imageRecorder, personDetection, datapointSender, minTimeInterval):
-        self.lastPictureTime = datetime.min()
+        self.lastPictureTime = datetime.min
         self.systemID = systemID
         self.imageRecorder = imageRecorder
         self.personDetection = personDetection
@@ -26,5 +26,7 @@ class CameraClient:
         # TODO: convert to 3d map
 
         # send data
+        dataPoints = []
         for personPos in personList:
-            self.datapointSender.sendDatapoint(Datapoint(personPos, self.lastPictureTime), self.systemID)
+            dataPoints.append(Datapoint(personPos, self.lastPictureTime))
+        self.datapointSender.sendDatapoints(dataPoints, self.systemID)
